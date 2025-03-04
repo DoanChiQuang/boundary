@@ -53,7 +53,7 @@ export default function Content({ id }: Props) {
 
     return (
         <div className="space-y-6">
-            <h1 className="text-center text-2xl font-bold text-[#0F172A] after:mx-auto after:mt-4 after:block after:h-2 after:w-60 after:rounded-full after:bg-blue-900 sm:text-3xl md:text-5xl">
+            <h1 className="text-center text-xl font-bold text-[#0F172A] after:mx-auto after:mt-4 after:block after:h-2 after:w-60 after:rounded-full after:bg-blue-900 sm:text-3xl md:text-5xl">
                 Thông Tin Địa Giới Hành Chính
             </h1>
             {!id ? <Search areas={areas} /> : <Detail area={getAreaById()} />}
@@ -66,7 +66,7 @@ function Search({ areas }: { areas: IArea[] }) {
     const navigate = useNavigate();
     return (
         <div className="flex flex-col items-center gap-4">
-            <h2 className="text-md text-center font-semibold text-[#0F172A] sm:text-xl md:text-3xl">
+            <h2 className="text-center text-lg font-semibold text-[#0F172A] md:text-3xl">
                 Khu Phố
             </h2>
             <div className="w-full max-w-96">
@@ -115,7 +115,7 @@ function Detail({ area }: { area?: IArea }) {
     return area ? (
         <div className="space-y-4">
             <div className="space-y-2 text-center text-[#0F172A]">
-                <h2 className="text-xl font-semibold md:text-3xl">
+                <h2 className="text-lg font-semibold md:text-3xl">
                     {area.name}
                 </h2>
                 {/* <p className="text-center">{area.address}</p> */}
@@ -124,17 +124,17 @@ function Detail({ area }: { area?: IArea }) {
                 </p>
             </div>
             <div className="space-y-2">
-                <h3 className="text-center text-lg font-semibold text-[#0F172A] md:text-2xl">
+                <h3 className="text-md text-center font-semibold text-[#0F172A] md:text-2xl">
                     Thành Viên
                 </h3>
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {area.members.map((member, index) => (
                         <div
                             key={`thanhvien_${index}`}
                             className={`flex items-center gap-4 rounded-3xl border border-[#E2E8F0] p-4 shadow-lg ${(index == 0 && 'md:col-start-1 lg:col-start-2') || (index == 1 && 'md:col-start-2 lg:col-start-1')}`}
                         >
                             <img
-                                className="w-32"
+                                className="w-20"
                                 src={
                                     member.isAdmin
                                         ? member.isMale
@@ -189,7 +189,7 @@ function Detail({ area }: { area?: IArea }) {
             </div>
         </div>
     ) : (
-        <div className="flex flex-col items-center justify-center gap-4 my-32">
+        <div className="my-32 flex flex-col items-center justify-center gap-4">
             <img
                 src={EmptyBox}
                 className="w-32"
